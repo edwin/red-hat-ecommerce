@@ -1,16 +1,18 @@
 package com.redhat.sample.ecommerce.fe.service;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @ApplicationScoped
 public class ProductService {
 
-    public List<Map> getProducts( ) {
-        return Arrays.asList(new HashMap(){{
+    private List<Map> products = new ArrayList<>();
+    private Map productNotFound = new HashMap();
+
+    @PostConstruct
+    public void populateData() throws Exception {
+        products = Arrays.asList(new HashMap(){{
             put("productName", "Red Hat Hoodie");
             put("productDescription", "District Re-Fleece breathes new life into reclaimed materials with its 100% recycled fabric. Comfortable and never re-dyed, it’s a fleece that just feels good.");
             put("productImage", "static/1629331866_large.jpg");
@@ -32,6 +34,25 @@ public class ProductService {
             put("productStock", 11);
             put("productPrice", "$3.99");
         }});
+
+        productNotFound = new HashMap(){{
+            put("productName", "Not Found");
+            put("productDescription", "N/A .");
+            put("productImage", "static/404.jpg");
+            put("productId", 0);
+            put("productStock", 0);
+            put("productPrice", "$0.00");
+        }};
+    }
+
+    public Map getProduct(Integer productId) {
+        if(productId <= products.size())
+            return products.get(productId-1);
+        return productNotFound;
+    }
+
+    public List<Map> getProducts( ) {
+        return products;
     }
 
 }

@@ -4,9 +4,7 @@ import com.redhat.sample.ecommerce.fe.service.LocationService;
 import com.redhat.sample.ecommerce.fe.service.ProductService;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.Map;
@@ -38,5 +36,13 @@ public class ApiController {
     public List<Map> getProducts() {
         LOG.debug("Calling Products");
         return productService.getProducts();
+    }
+
+    @GET
+    @Path("/product")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Map getProduct(@QueryParam("productId") Integer productId) {
+        LOG.debug("Calling Product "+ productId);
+        return productService.getProduct(productId);
     }
 }
