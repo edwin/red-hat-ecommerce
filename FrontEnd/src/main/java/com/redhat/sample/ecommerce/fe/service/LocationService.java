@@ -6,7 +6,7 @@ import java.util.*;
 @ApplicationScoped
 public class LocationService {
 
-    public List<String> getLocation( ) {
+    public List<String> getLocations( ) {
         return Arrays.asList("Singapore", "Jakarta", "Kuala Lumpur");
     }
 

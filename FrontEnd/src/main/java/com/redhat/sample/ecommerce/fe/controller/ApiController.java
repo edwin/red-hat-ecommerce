@@ -1,6 +1,7 @@
 package com.redhat.sample.ecommerce.fe.controller;
 
 import com.redhat.sample.ecommerce.fe.service.LocationService;
+import com.redhat.sample.ecommerce.fe.service.ProductService;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -8,6 +9,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+import java.util.Map;
+
+import org.jboss.logging.Logger;
 
 @Path("/api/v1")
 public class ApiController {
@@ -15,10 +19,24 @@ public class ApiController {
     @Inject
     LocationService locationService;
 
+    @Inject
+    ProductService productService;
+
+    private static final Logger LOG = Logger.getLogger(ApiController.class);
+
     @GET
-    @Path("/location")
+    @Path("/locations")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<String> getLocation() {
-        return locationService.getLocation();
+    public List<String> getLocations() {
+        LOG.debug("Calling Locations");
+        return locationService.getLocations();
+    }
+
+    @GET
+    @Path("/products")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Map> getProducts() {
+        LOG.debug("Calling Products");
+        return productService.getProducts();
     }
 }

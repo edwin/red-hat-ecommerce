@@ -50,10 +50,6 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-opentracing</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.jaegertracing</groupId>
-            <artifactId>jaeger-zipkin</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>io.quarkus</groupId>
