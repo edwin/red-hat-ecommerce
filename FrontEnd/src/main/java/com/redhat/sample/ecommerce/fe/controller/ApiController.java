@@ -1,5 +1,6 @@
 package com.redhat.sample.ecommerce.fe.controller;
 
+import com.redhat.sample.ecommerce.fe.bean.Location;
 import com.redhat.sample.ecommerce.fe.service.LocationService;
 import com.redhat.sample.ecommerce.fe.service.ProductService;
 
@@ -25,7 +26,7 @@ public class ApiController {
     @GET
     @Path("/locations")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<String> getLocations() {
+    public List<Location> getLocations() {
         LOG.debug("Calling Locations");
         return locationService.getLocations();
     }

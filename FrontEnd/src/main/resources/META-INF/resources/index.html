@@ -125,7 +125,7 @@
             $(document).ready(function(){
                 $.get('/api/v1/locations', function(response) {
                     $.each(response, function(key, val) {
-                        $('#stores-div').after('<a href="javascript:void(0);" class="list-group-item">'+val+'</a>');
+                        $('#stores-div').after('<a href="javascript:void(0);" class="list-group-item">'+val.locationName+'</a>');
                     });
                 });
             });
