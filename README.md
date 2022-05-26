@@ -11,3 +11,10 @@ A simple ecommerce application, deployed as a microservice. With having multiple
 - Quarkus 2.9.1.Final
 - Bootstrap 4.6.1
 - JQuery 3.6.0
+
+### Location Service
+- Java 11
+- Spring Framework 5.3.20
+- MyBatis 3.5
+- MyBatis EhCache
+- JBoss EAP 7.4

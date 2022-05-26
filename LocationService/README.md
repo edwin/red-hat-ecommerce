@@ -24,4 +24,5 @@ Libraries
 - Java 11
 - Spring Framework 5.3.20
 - MyBatis 3.5
+- MyBatis EhCache
 - JBoss EAP 7.4
