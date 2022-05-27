@@ -1,5 +1,7 @@
 package com.redhat.sample.ecommerce.fe.service;
 
+import org.eclipse.microprofile.metrics.annotation.Timed;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import java.util.*;
@@ -45,12 +47,14 @@ public class ProductService {
         }};
     }
 
+    @Timed
     public Map getProduct(Integer productId) {
         if(productId <= products.size())
             return products.get(productId-1);
         return productNotFound;
     }
 
+    @Timed
     public List<Map> getProducts( ) {
         return products;
     }

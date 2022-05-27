@@ -3,6 +3,7 @@ package com.redhat.sample.ecommerce.fe.service;
 import com.redhat.sample.ecommerce.fe.bean.Location;
 import com.redhat.sample.ecommerce.fe.client.LocationRestClient;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
 
@@ -26,6 +27,7 @@ public class LocationService {
 
     private static final Logger LOG = Logger.getLogger(LocationService.class);
 
+    @Timed
     public List<Location> getLocations( ) {
         LOG.debug("Calling Locations from "+locationServiceEndpoint);
         return locationRestClient.getLocations();
