@@ -15,8 +15,11 @@ import org.springframework.context.annotation.Bean;
  */
 public class StockHelper {
     @Bean
-    public Product addStockToProduct(@Body Product product, @Header("stock") String stock) {
-        product.setStock(Long.parseLong(stock));
+    public Product addStockToProduct(@Body Product product, @Header("stockNumber") String stock) {
+        if(stock == null)
+            product.setStock(0l);
+        else
+            product.setStock(Long.parseLong(stock));
         return product;
     }
 }
