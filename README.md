@@ -18,3 +18,8 @@ A simple ecommerce application, deployed as a microservice. With having multiple
 - MyBatis 3.5
 - MyBatis EhCache
 - JBoss EAP 7.4
+
+### Product Service
+- Java 11
+- Spring Boot 2.6.7
+- Apache Camel 3.17.0
