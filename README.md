@@ -23,3 +23,7 @@ A simple ecommerce application, deployed as a microservice. With having multiple
 - Java 11
 - Spring Boot 2.6.7
 - Apache Camel 3.17.0
+
+### Stock Service
+- Java 11
+- Snowdrop 2.5.12
