@@ -13,8 +13,6 @@ create table t_product
 	constraint t_product_pk
 		primary key (id)
 );
-
-
 ```
 
 ## Libraries

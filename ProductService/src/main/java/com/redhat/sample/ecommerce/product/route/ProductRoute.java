@@ -1,5 +1,6 @@
 package com.redhat.sample.ecommerce.product.route;
 
+import com.redhat.sample.ecommerce.product.helper.StockHelper;
 import com.redhat.sample.ecommerce.product.service.ProductService;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,8 @@ public class ProductRoute extends RouteBuilder {
                     Long id = (Long) exchange.getIn().getBody();
                     exchange.getMessage().setBody(productService.getProduct(id));
                 })
+                .setHeader("stock",  simple("1"))
+                .bean(StockHelper.class, "addStockToProduct")
                 .end();
     }
 }

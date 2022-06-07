@@ -24,6 +24,9 @@ public class Product implements Serializable {
     private String productImage;
     private BigDecimal productPrice;
 
+    @Transient
+    private Long stock;
+
     public Product() {
     }
 
@@ -74,5 +77,13 @@ public class Product implements Serializable {
 
     public void setProductPrice(BigDecimal productPrice) {
         this.productPrice = productPrice;
+    }
+
+    public Long getStock() {
+        return stock;
+    }
+
+    public void setStock(Long stock) {
+        this.stock = stock;
     }
 }
