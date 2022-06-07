@@ -19,18 +19,18 @@ import java.util.List;
  * 03 Jun 2022 10:53
  */
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api")
 public class ProductController {
 
     @Autowired
     private ProducerTemplate template;
 
-    @GetMapping("/products")
+    @GetMapping("/v1/products")
     public List<Product> getProducts() {
         return (List<Product>) template.requestBody("direct:getProducts", "");
     }
 
-    @GetMapping("/product")
+    @GetMapping("/v1/product")
     public Product getProduct(@RequestParam("id") Long id) {
         return (Product) template.requestBody("direct:getProduct", id);
     }
