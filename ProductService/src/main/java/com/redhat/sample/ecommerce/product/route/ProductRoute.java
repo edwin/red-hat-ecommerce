@@ -1,8 +1,10 @@
 package com.redhat.sample.ecommerce.product.route;
 
-import org.apache.camel.Exchange;
+import com.redhat.sample.ecommerce.product.service.ProductService;
 import org.apache.camel.builder.RouteBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 
 /**
  * <pre>
@@ -15,13 +17,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductRoute extends RouteBuilder {
 
+    @Autowired
+    private ProductService productService;
+
     @Override
     public void configure() throws Exception {
         from("direct:getProducts")
             .routeId("getProducts")
             .tracing()
             .log("calling getProducts")
-            .setBody(constant("{\"hello\":\"world\"}"))
+            .process(exchange -> {
+                exchange.getMessage().setBody(productService.getProducts());
+            })
             .end();
     }
 }

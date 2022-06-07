@@ -1,9 +1,13 @@
 package com.redhat.sample.ecommerce.product.controller;
 
+import com.redhat.sample.ecommerce.product.domain.Product;
 import org.apache.camel.ProducerTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * <pre>
@@ -14,14 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
  * 03 Jun 2022 10:53
  */
 @RestController
+@RequestMapping("/api/v1")
 public class ProductController {
 
     @Autowired
     private ProducerTemplate template;
 
-    @GetMapping(value = "/api/v1/products",
-            produces="application/json")
-    public String getProducts() {
-        return template.requestBody("direct:getProducts", "").toString();
+    @GetMapping("/products")
+    public List<Product> getProducts() {
+        return (List<Product>) template.requestBody("direct:getProducts", "");
     }
 }
