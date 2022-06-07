@@ -5,6 +5,7 @@ import org.apache.camel.ProducerTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,5 +28,10 @@ public class ProductController {
     @GetMapping("/products")
     public List<Product> getProducts() {
         return (List<Product>) template.requestBody("direct:getProducts", "");
+    }
+
+    @GetMapping("/product")
+    public Product getProduct(@RequestParam("id") Long id) {
+        return (Product) template.requestBody("direct:getProduct", id);
     }
 }

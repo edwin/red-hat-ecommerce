@@ -30,5 +30,15 @@ public class ProductRoute extends RouteBuilder {
                 exchange.getMessage().setBody(productService.getProducts());
             })
             .end();
+
+        from("direct:getProduct")
+                .routeId("getProduct")
+                .tracing()
+                .log("calling products ${body}")
+                .process(exchange -> {
+                    Long id = (Long) exchange.getIn().getBody();
+                    exchange.getMessage().setBody(productService.getProduct(id));
+                })
+                .end();
     }
 }
