@@ -27,3 +27,8 @@ A simple ecommerce application, deployed as a microservice. With having multiple
 ### Stock Service
 - Java 11
 - Snowdrop 2.5.12
+
+### Purchase Service
+- Java 11
+- Quarkus 2.10.0.Final
+- Apache Camel 3.17.0
